@@ -1,3 +1,6 @@
+# Playing Typeracer
+To run the typeracer game, cd into the backend folder and run: npm run dev to start the server. Make sure to replace the mongo URI with your own. Then cd into the frontend folder and run: npm start to start the frontend. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

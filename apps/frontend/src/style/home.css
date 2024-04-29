@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jersey 25', sans-serif;
+}
+
+body {
+    background-image: url('../images/desert.svg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.land-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.land-container .start{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+    max-width: 100%;
+    width: 700px;
+}
+
+/* .land-container .start {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    max-width: 100%;
+    width: 700px;
+} */
+
+/* .start-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+} */
+
+.land-container .start h1{
+    color: black;
+    font-size: 8rem;
+    font-family: "Jersey 25", sans-serif;
+}
+
+.land-container .start button{
+    width: 200px;
+    height: 70px;
+    cursor: pointer;
+    border: none;
+    background: #3aa3ff;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #FFF;
+}
+
+.land-container .start button:hover{
+    background: #5ab2ff;
+}
+
+.land-container .login-info span{
+    font-family: "Ubuntu", sans-serif;
+    color: #FFF;
+}
+
+.land-container .login-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
