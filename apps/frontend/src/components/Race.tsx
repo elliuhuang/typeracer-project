@@ -47,7 +47,6 @@ const Race = () => {
   }, [timer]);
 
   const keyBind = (e: any) => {
-    //if keyBind is correct and last letter isnt typed wrong, go to next step
     if(e.keyCode === 16) return
     if (start !== 0) return;
 
@@ -58,7 +57,6 @@ const Race = () => {
       setCurrentIndex(currentIndex + 1);
       typeRef!.current?.children[currentIndex].classList.add("correct");
 
-      //if the typed is wrong and also that's not a backspace then make it red
     } else if (
       e.key !== sentence.text[currentIndex] &&
       e.key !== "Backspace" &&
@@ -69,13 +67,11 @@ const Race = () => {
       setCountWrong(countWrong + 1);
   
     } else if (e.key === "Backspace" && currentIndex >= 0) {
-      //if user clicks on backspace and index is bigger or equals 0 remove "wrong"
       typeRef!.current?.children[currentIndex].classList.remove("wrong");
     }
   };
 
   useEffect(() => {
-    //if starting timer isn't up don't run bottom function
     if (start !== 0) return;
 
     window.addEventListener("keyup", keyBind);

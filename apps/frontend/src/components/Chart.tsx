@@ -1,61 +1,75 @@
-// import React, { useEffect, useRef } from 'react';
-// import Chart from 'chart.js/auto';
-
-// interface WpmHistogramProps {
-//   data: number[]; 
-// }
-
-// const WpmHistogram: React.FC<WpmHistogramProps> = ({ data }) => {
-//   const chartRef = useRef<HTMLCanvasElement>(null);
-
-//   useEffect(() => {
-//     if (!chartRef.current || data.length === 0) return;
-
-//     const ctx = chartRef.current.getContext('2d');
-//     if (!ctx) return;
-
-//     new Chart(ctx, {
-//       type: 'bar',
-//       data: {
-//         labels: data.map((_, index) => `Race ${index + 1}`),
-//         datasets: [{
-//           label: 'WPM',
-//           data: data,
-//           backgroundColor: 'rgba(54, 162, 235, 0.2)', 
-//           borderColor: 'rgba(54, 162, 235, 1)',
-//           borderWidth: 1
-//         }]
-//       },
-//       options: {
-//         scales: {
-//           y: {
-//             beginAtZero: true
-//           }
-//         }
-//       }
-//     });
-//   }, [data]);
-
-//   return <canvas ref={chartRef} />;
-// };
-
-// export default WpmHistogram;
 import React from 'react';
-import { Chart as ChartJS } from 'chart.js/auto';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-export const WpmHistogram = () => {
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const WpmHistogram = ({ wpmData, mistakeData }) => {
+    const numRaces = wpmData.length; 
+    const wpmChartData = {
+        labels: wpmData.map((_, index) => `Race ${index + 1}`),
+        datasets: [
+            {
+                label: 'WPM',
+                data: wpmData,
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const mistakesChartData = {
+        labels: mistakeData.map((_, index) => `Race ${index + 1}`),
+        datasets: [
+            {
+                label: 'Mistakes',
+                data: mistakeData,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const options = {
+        scales: {
+            x: {
+                type: 'category',
+                display: true,
+                
+            },
+            y: {
+                display: true,
+                
+            },
+        },
+    };
+
     return (
-    <Bar 
-        data={{
-            labels: ["A", "B", "C"],
-            datasets: [
-                {
-                    label: "Revenue",
-                    data: [200, 300, 400],
-                }
-            ]
-        }}
-    />
+        <div className="chart-container">
+            <div className="wpm-chart">
+                <h3>WPM last {numRaces} races</h3>
+                <Bar options={options} data={wpmChartData} />
+            </div>
+            <div className="mistakes-chart">
+                <h3>Mistakes last {numRaces} races</h3>
+                <Bar options={options} data={mistakesChartData} />
+            </div>
+        </div>
     );
-}
+};
+

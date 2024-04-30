@@ -27,13 +27,6 @@ const Home = () => {
                             <span>Don't have an account? <Link to="/signup">Signup</Link></span>
                         </>
                     )}
-                    {/* {!signedIn && (
-                        <>
-                        <span>Login to save progress! <Link to="/login">Login</Link></span>
-                        <span>Don't have an account? <Link to="/signup">Signup</Link></span>
-                        </>
-                    )}
-                    <Logout /> */}
                 </div>
             </div>
         </div>

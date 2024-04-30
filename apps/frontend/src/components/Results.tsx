@@ -73,7 +73,6 @@ const Results = () => {
     return (
         <div className="results-container">
             <main>
-                {/* <p className="wpm">WPM: {Math.floor((results.sentence.text.length / 5) / (results.timer) * 60)}</p>  */}
                 <p className="wpm">WPM: {calculateWPM(results.sentence.text, results.timer)}</p> 
                 <p className="mistakes" style={{color: "#ff4c4c"}}>Mistakes: {results.mistakes}</p>
                 <br />
@@ -81,7 +80,6 @@ const Results = () => {
                 <p style={{fontSize: "1.2rem"}}>{results.sentence.text}</p>
                 <button style={{transform: "translateY(20px)"}} onClick={() => navigate("/race")}>Play Again</button>
                 <button style={{transform: "translateY(20px)"}} onClick={() => navigate("/")}>Home</button>
-                {/* <button style={{transform: "translateY(20px)"}} onClick={saveResults}>Save Results</button> */}
             </main>
         </div>
     )

@@ -34,12 +34,14 @@ const ProfilePage: React.FC = () => {
     }
 
     let wpmData = userData.wpm;
+    let mistakeData = userData.mistakes;
 
     if (wpmData.length > 10) {
       wpmData = wpmData.slice(-10); // Only take the last 10 values
+      mistakeData = mistakeData.slice(-10);
     }
 
-    return <WpmHistogram/>;
+    return <WpmHistogram wpmData={wpmData} mistakeData={mistakeData} />;
   };
 
   const renderUserData = () => {
@@ -51,29 +53,13 @@ const ProfilePage: React.FC = () => {
     const avgMistakes = userData.mistakes.length > 0 ? userData.mistakes.reduce((acc: number, val: number) => acc + val, 0) / userData.mistakes.length : 0;
     const avgWPM = userData.wpm.length > 0 ? userData.wpm.reduce((acc: number, val: number) => acc + val, 0) / userData.wpm.length : 0;
 
-    // return (
-    //     <div className="profile-container">
-    //       {userData ? (
-    //         <div className="profile-content">
-    //           <h1>{userData.username}'s Profile</h1>
-    //           <p>Average Mistakes: {avgMistakes}</p>
-    //           <p>Average WPM: {avgWPM}</p>
-    //           {renderWpmHistogram()}
-    //           <button onClick={() => navigate('/')}>Home</button>
-    //         </div>
-    //       ) : (
-    //         <p>Loading...</p>
-    //       )}
-    //     </div>
-    //   );
-
     return (
         <div className="profile-container"> 
           <div className="profile-content"> 
             <h1>{userData.username}'s Profile</h1>
             <p>Average Mistakes: {avgMistakes.toFixed(2)}</p>
             <p>Average WPM: {avgWPM.toFixed(2)}</p>
-            {/* <WpmHistogram data={} /> */}
+            {renderWpmHistogram()}
             <button onClick={() => navigate("/")}>Home</button>
           </div>
         </div>
