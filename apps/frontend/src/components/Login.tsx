@@ -32,9 +32,6 @@ const LoginPageComponent: React.FC<loginProps> = ( { setSignedIn } ) => {
             throw new Error('Login failed'); 
           }
 
-          // const data = await res.json();
-          // const loggedInUsername = data.username;
-
           localStorage.setItem('username', username);
           
           alert('Successfully logged in!');
